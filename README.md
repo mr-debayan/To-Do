@@ -29,7 +29,8 @@ IIT Ropar).
 ## Run it
 
 ```bash
-cd "Default Project"
+git clone https://github.com/mr-debayan/To-Do.git
+cd To-Do
 
 python3 -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate

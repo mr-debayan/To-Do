@@ -6,7 +6,8 @@ automated pytest suite that covers the same behaviour.
 ## 1. Automated tests
 
 ```bash
-cd "/home/db/Documents/Default Project"
+git clone https://github.com/mr-debayan/To-Do.git
+cd To-Do
 source .venv/bin/activate
 
 pip install -r requirements-dev.txt   # first time only
