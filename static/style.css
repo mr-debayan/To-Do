@@ -1,0 +1,690 @@
+/* ==========================================================================
+   To-Do App styles
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+  --bg: #f4f3fa;
+  --surface: #ffffff;
+  --surface-2: #f2f1f8;
+  --text: #1b1a2b;
+  --muted: #6f6d85;
+  --border: #e5e2f0;
+  --accent: #5b5bd6;
+  --accent-strong: #4646be;
+  --accent-soft: #ececfd;
+  --danger: #d9485f;
+  --danger-soft: rgba(217, 72, 95, 0.1);
+  --shadow: 0 18px 40px -22px rgba(35, 30, 80, 0.35);
+  --radius: 16px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg: #111118;
+    --surface: #1a1a24;
+    --surface-2: #232331;
+    --text: #efedf9;
+    --muted: #a3a0b8;
+    --border: #2b2a3b;
+    --accent: #8b8bf5;
+    --accent-strong: #a5a5ff;
+    --accent-soft: #262647;
+    --danger: #ff8095;
+    --danger-soft: rgba(255, 128, 149, 0.12);
+    --shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.8);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 56px 20px 40px;
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+  background:
+    radial-gradient(900px 400px at 15% -10%, rgba(91, 91, 214, 0.12), transparent 70%),
+    radial-gradient(700px 380px at 90% 0%, rgba(47, 158, 110, 0.09), transparent 70%),
+    var(--bg);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+.app {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   Header
+   -------------------------------------------------------------------------- */
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  color: #fff;
+  background: linear-gradient(135deg, #6c6cf0, #4f46c9);
+  box-shadow: 0 10px 22px -10px rgba(79, 70, 201, 0.8);
+  flex-shrink: 0;
+}
+
+.brand-mark svg {
+  width: 24px;
+  height: 24px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.subtitle {
+  margin: 2px 0 0;
+  font-size: 13.5px;
+  color: var(--muted);
+}
+
+.stats {
+  padding: 7px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 13px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.stats strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Progress
+   -------------------------------------------------------------------------- */
+
+.progress-card {
+  padding: 15px 18px 16px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.progress-text {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.progress-percent {
+  color: var(--text);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.progress-track {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #6c6cf0, #38a37a);
+  transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* --------------------------------------------------------------------------
+   Add form
+   -------------------------------------------------------------------------- */
+
+.add-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 7px 7px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.add-form:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft), var(--shadow);
+}
+
+.add-form input[type="text"] {
+  flex: 1;
+  min-width: 0;
+  padding: 11px 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 15.5px;
+  color: var(--text);
+}
+
+.add-form input::placeholder {
+  color: var(--muted);
+  opacity: 0.85;
+}
+
+.add-form input:focus {
+  outline: none;
+}
+
+.btn-add {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #6c6cf0, #4f46c9);
+  color: #fff;
+  font: inherit;
+  font-size: 14.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.12s ease, filter 0.15s ease;
+}
+
+.btn-add svg {
+  width: 17px;
+  height: 17px;
+}
+
+.btn-add:hover {
+  filter: brightness(1.07);
+}
+
+.btn-add:active {
+  transform: scale(0.97);
+}
+
+/* --------------------------------------------------------------------------
+   Filters
+   -------------------------------------------------------------------------- */
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 18px 0 14px;
+}
+
+.filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 13.5px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.filter:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.filter.is-active {
+  border-color: transparent;
+  background: var(--surface);
+  color: var(--accent-strong);
+  font-weight: 600;
+  box-shadow: 0 4px 14px -8px rgba(35, 30, 80, 0.45);
+}
+
+.count {
+  min-width: 20px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 11.5px;
+  font-weight: 600;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.filter.is-active .count {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+/* --------------------------------------------------------------------------
+   Task list
+   -------------------------------------------------------------------------- */
+
+.task-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.task {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 14px 13px 16px;
+  transition: background 0.15s ease;
+}
+
+.task + .task {
+  border-top: 1px solid var(--border);
+}
+
+.task:hover {
+  background: color-mix(in srgb, var(--surface-2) 45%, transparent);
+}
+
+.toggle-form {
+  display: flex;
+  margin: 0;
+}
+
+.check {
+  display: grid;
+  place-items: center;
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  border: 2px solid color-mix(in srgb, var(--muted) 40%, transparent);
+  border-radius: 50%;
+  background: transparent;
+  color: transparent;
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease,
+    transform 0.12s ease;
+}
+
+.check svg {
+  width: 13px;
+  height: 13px;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.check:hover {
+  border-color: var(--accent);
+  transform: scale(1.06);
+}
+
+.check:active {
+  transform: scale(0.94);
+}
+
+.task.is-done .check {
+  border-color: transparent;
+  background: linear-gradient(135deg, #6c6cf0, #4f46c9);
+  color: #fff;
+}
+
+.task.is-done .check svg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.task-body {
+  min-width: 0;
+}
+
+.task-title {
+  display: block;
+  font-size: 15.5px;
+  font-weight: 500;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  transition: color 0.18s ease;
+}
+
+.task.is-done .task-title {
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-color: color-mix(in srgb, var(--muted) 65%, transparent);
+  text-decoration-thickness: 1.5px;
+}
+
+.task-meta {
+  display: block;
+  margin-top: 2px;
+  font-size: 11.5px;
+  color: var(--muted);
+  opacity: 0.85;
+}
+
+.task-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.task:hover .task-actions,
+.task:focus-within .task-actions {
+  opacity: 1;
+}
+
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.icon-btn svg {
+  width: 17px;
+  height: 17px;
+}
+
+.icon-btn:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.icon-btn.danger:hover {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.delete-form {
+  display: flex;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Inline edit
+   -------------------------------------------------------------------------- */
+
+.edit-form {
+  display: flex;
+  grid-column: 1 / -1;
+  gap: 8px;
+  margin: 2px 0 2px 37px;
+}
+
+.edit-form[hidden] {
+  display: none;
+}
+
+.edit-form input[type="text"] {
+  flex: 1;
+  min-width: 0;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-2);
+  font: inherit;
+  font-size: 14.5px;
+  color: var(--text);
+}
+
+.edit-form input[type="text"]:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: var(--surface);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.btn-save,
+.btn-cancel {
+  padding: 9px 14px;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.btn-save {
+  border: 0;
+  background: linear-gradient(135deg, #6c6cf0, #4f46c9);
+  color: #fff;
+}
+
+.btn-save:hover {
+  filter: brightness(1.07);
+}
+
+.btn-cancel {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+}
+
+.btn-cancel:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+/* --------------------------------------------------------------------------
+   Empty state, footer, hint
+   -------------------------------------------------------------------------- */
+
+.empty {
+  padding: 52px 24px;
+  border: 1px dashed color-mix(in srgb, var(--border) 80%, var(--muted));
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  text-align: center;
+}
+
+.empty-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  margin-bottom: 14px;
+  border-radius: 18px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+.empty-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.empty-title {
+  margin: 0 0 4px;
+  font-size: 16.5px;
+  font-weight: 600;
+}
+
+.empty-text {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.app-footer {
+  margin-top: 16px;
+  text-align: right;
+}
+
+.clear-form {
+  display: inline;
+}
+
+.link-btn {
+  padding: 4px 2px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.link-btn:hover {
+  color: var(--danger);
+  text-decoration-color: currentColor;
+  background: transparent;
+}
+
+.hint {
+  margin: 26px 0 0;
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  opacity: 0.9;
+}
+
+kbd {
+  display: inline-block;
+  min-width: 18px;
+  padding: 1px 5px;
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  background: var(--surface);
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* --------------------------------------------------------------------------
+   Focus & motion
+   -------------------------------------------------------------------------- */
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Small screens
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 540px) {
+  body {
+    padding: 30px 14px 28px;
+  }
+
+  h1 {
+    font-size: 23px;
+  }
+
+  .brand-mark {
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+  }
+
+  .subtitle {
+    display: none;
+  }
+
+  .add-form {
+    padding-left: 14px;
+  }
+
+  .btn-add span {
+    display: none;
+  }
+
+  .btn-add {
+    padding: 10px 12px;
+  }
+
+  .task-actions {
+    opacity: 1;
+  }
+
+  .task {
+    padding: 12px 10px 12px 14px;
+    gap: 10px;
+  }
+
+  .edit-form {
+    margin-left: 35px;
+  }
+}
